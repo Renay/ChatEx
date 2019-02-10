@@ -20,8 +20,7 @@ public class Nothing implements PermissionsPlugin {
 
     @Override
     public String[] getGroupNames(Player p) {
-        String[] data = {""};
-        return data;
+        return new String[]{""};
     }
 
     @Override

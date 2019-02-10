@@ -18,9 +18,7 @@ public class PluginManager implements PermissionsPlugin {
 
     public PluginManager() {
         ChatEX.debug("Checking for Plugins...");
-        if (HookManager.checkPEX()) {
-            handler = new PermissionsEx();
-        } else if (HookManager.checkVault() && Vault.setupChat()) {
+        if (HookManager.checkVault() && Vault.setupChat()) {
             handler = new Vault();
         } else {
             handler = new Nothing();

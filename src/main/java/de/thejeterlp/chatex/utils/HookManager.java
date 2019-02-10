@@ -12,18 +12,4 @@ public class HookManager {
         Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("Vault");
         return plugin != null && plugin.isEnabled();
     }
-
-    public static boolean checkPEX() {
-        Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("PermissionsEx");
-        return plugin != null && plugin.isEnabled();
-    }
-
-    public static boolean checkFactions() {
-        Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("Factions");
-        if (plugin != null) {
-            return plugin.isEnabled() && plugin.getDescription().getVersion().startsWith("2.");
-        } else {
-            return false;
-        }
-    }
 }

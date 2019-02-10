@@ -14,9 +14,9 @@ import org.bukkit.event.EventPriority;
 public enum Config {
 
     ENABLE("enable", true, "Should the plugin be enabled?"),
-    FORMAT("message-format", "%faction %prefix%displayname%suffix: %message", "The standard message-format."),
-    GLOBALFORMAT("global-message-format", "%faction &9[%world] %prefix%displayname%suffix: &e%message", "The message-format if ranged-mode is enabled."),
-    RANGEMODE("ranged-mode", false, "Should the ranged-mode be enabled?"),
+    FORMAT("message-format", "&f[&eL&f]&r %prefix%player%suffix&r: %message", "The standard message-format."),
+    GLOBALFORMAT("global-message-format", "&f[&6W&f]&r %prefix%player%suffix&r: &e%message", "The message-format if ranged-mode is enabled."),
+    RANGEMODE("ranged-mode", true, "Should the ranged-mode be enabled?"),
     RANGE("chat-range", 100.0, "The range to talk to other players."),
     MULTIPREFIXES("multi-prefixes", false, "Should the multi-prefixes be enabled? See readme.txt for more info."),
     MULTISUFFIXES("multi-suffixes", false, "Should the multi-suffixes be enabled? See readme.txt for more info."),
@@ -100,10 +100,10 @@ public enum Config {
     }
 
     public static void reload(boolean complete) {
-        if (!complete) {
-            cfg = YamlConfiguration.loadConfiguration(f);
+        if (complete) {
+            load();
             return;
         }
-        load();
+        cfg = YamlConfiguration.loadConfiguration(f);
     }
 }

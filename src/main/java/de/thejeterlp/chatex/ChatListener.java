@@ -48,14 +48,6 @@ public abstract class ChatListener implements Listener {
     }
 
     protected void execute(AsyncPlayerChatEvent event) {
-        if (!event.getPlayer().hasPermission("chatex.allowchat")) {
-            Map<String, String> rep = new HashMap<>();
-            rep.put("%perm", "chatex.allowchat");
-            Locales.COMMAND_RESULT_NO_PERM.send(event.getPlayer(), rep);
-            event.setCancelled(true);
-            return;
-        }
-
         String format = PluginManager.getInstance().getMessageFormat(event.getPlayer());
         boolean localChat = Config.RANGEMODE.getBoolean();
         boolean global = false;
@@ -72,8 +64,8 @@ public abstract class ChatListener implements Listener {
 
         if (localChat) {
             ChatEX.debug("Local chat is enabled!");
-            if (chatMessage.startsWith("!") && player.hasPermission("chatex.chat.global")) {
-                ChatEX.debug("Global message!");
+            if (chatMessage.startsWith("!")) {
+                ChatEX.debug("Global message from %p".replace("%p", player.getDisplayName()));
                 chatMessage = chatMessage.replaceFirst("!", "");
                 format = PluginManager.getInstance().getGlobalMessageFormat(event.getPlayer());
                 global = true;

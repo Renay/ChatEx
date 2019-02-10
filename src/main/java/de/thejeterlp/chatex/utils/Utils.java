@@ -1,7 +1,5 @@
 package de.thejeterlp.chatex.utils;
 
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MPlayer;
 import de.thejeterlp.chatex.ChatEX;
 import de.thejeterlp.chatex.ChatListener;
 import de.thejeterlp.chatex.api.ChatExEvent;
@@ -81,7 +79,6 @@ public class Utils {
         result = result.replace("%world", player.getWorld().getName());
         result = result.replace("%group", PluginManager.getInstance().getGroupNames(player)[0]);
         result = replaceTime(result);
-        result = replaceFaction(player, result);
         
         ChatExEvent e = new ChatExEvent(player, result);
         ChatEX.getInstance().getServer().getPluginManager().callEvent(e);
@@ -213,15 +210,6 @@ public class Utils {
             ex.printStackTrace();
             return false;
         }
-    }
-    
-    public static String replaceFaction(Player player, String msg) {
-        if (!HookManager.checkFactions()) {
-            return msg.replace("%faction", "");
-        }
-        final MPlayer uplayer = MPlayer.get(player);
-        final Faction faction = uplayer.getFaction();
-        return msg.replace("%faction", faction.getName());
     }
     
     private static boolean checkForIPPattern(String message) {
