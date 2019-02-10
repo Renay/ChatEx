@@ -76,14 +76,19 @@ public abstract class ChatListener implements Listener {
                 event.getRecipients().addAll(Utils.getLocalRecipients(player));
             }
         }
-        format = format.replace("%message", "%2$s").replace("%player", "%1$s");
+        format = format
+                    .replace("%message", "%2$s")
+                    .replace("%player", "%1$s");
         format = Utils.replacePlayerPlaceholders(player, format);
         ChatEX.debug("Setting format");
+
         event.setFormat(format);
         chatMessage = Utils.translateColorCodes(chatMessage, player);
         ChatEX.debug("Setting message!");
+
         event.setMessage(chatMessage);
         ChatEX.debug("Logging chatmessage...");
+
         ChatLogger.writeToFile(event.getPlayer(), event.getMessage());
     }
 

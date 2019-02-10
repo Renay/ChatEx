@@ -18,8 +18,6 @@ public enum Config {
     GLOBALFORMAT("global-message-format", "&f[&6W&f]&r %prefix%player%suffix&r: &e%message", "The message-format if ranged-mode is enabled."),
     RANGEMODE("ranged-mode", true, "Should the ranged-mode be enabled?"),
     RANGE("chat-range", 100.0, "The range to talk to other players."),
-    MULTIPREFIXES("multi-prefixes", false, "Should the multi-prefixes be enabled? See readme.txt for more info."),
-    MULTISUFFIXES("multi-suffixes", false, "Should the multi-suffixes be enabled? See readme.txt for more info."),
     LOGCHAT("logChat", true, "Should the chat be logged?"),
     EVENTPRIORITY("Priority", EventPriority.LOWEST.toString(), "EventPriority for the ChatListener. See readme.txt for more info."),
     DEBUG("Debug", false, "Enables debug mode. Enable this if you get a bug."),
